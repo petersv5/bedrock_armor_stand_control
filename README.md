@@ -1,6 +1,6 @@
-# Bedrock Armor Status Control
-This mod allow Bedrock player connecting via Geyser/Floodgate to a Java Minecraft server to pose
-armor stands in-game. 
+# Bedrock Armor Stand Control
+This Fabric mod for Minecraft enables Bedrock players connecting via Geyser/Floodgate to a Java 
+Minecraft server to pose armor stands in-game. 
 
 Players trigger the armor stand dialog by interacting with an armor stand while crouching. This
 will open a dialog that allows the overall position and rotation of the armor stand to be 
@@ -17,3 +17,7 @@ This mod only work on servers with both Fabric and Floodgate installed.
 ## License
 
 This mod is available under the Apache 2.0 license. Please see the file "LICENSE" for further details.
+
+## Rebuild, bugs etc
+
+See the file "CONTRIBUTING.md".
