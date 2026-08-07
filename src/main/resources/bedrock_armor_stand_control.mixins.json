@@ -1,0 +1,15 @@
+{
+        "required": true,
+        "package": "net.ptefar.mods.bedrock_armor_stand_control.mixin",
+        "compatibilityLevel": "JAVA_25",
+        "mixins": [
+                "ArmorStandAccessor"
+        ],
+        "injectors": {
+                "defaultRequire": 1
+        },
+        "overwrites": {
+                "requireAnnotations": true
+        }
+}
+

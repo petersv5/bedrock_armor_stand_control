@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "bedrock_armor_stand_control",
+	"version": "${version}",
+	"name": "bedrock_armor_stand_control",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/bedrock_armor_stand_control/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.ptefar.mods.bedrock_armor_stand_control.Bedrock_armor_stand_control"
+		]
+	},
+        "mixins": [
+                "bedrock_armor_stand_control.mixins.json"
+        ],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
