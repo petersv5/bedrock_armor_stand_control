@@ -1,7 +1,6 @@
 package net.ptefar.mods.bedrock_armor_stand_control;
 
-import org.geysermc.geyser.api.GeyserApi;
-import org.geysermc.geyser.api.connection.GeyserConnection;
+import org.geysermc.floodgate.api.FloodgateApi;
 //import org.geysermc.geyser.api.util.Rotations;
 import org.geysermc.cumulus.form.CustomForm;
 import org.geysermc.cumulus.component.SliderComponent;
@@ -65,7 +64,7 @@ public class Bedrock_armor_stand_control implements ModInitializer {
         UseEntityCallback.EVENT.register((player, level, hand, entity, entityHitResult) -> {
             if (!level.isClientSide() && entity instanceof ArmorStand armorStand && player instanceof ServerPlayer serverPlayer) {
                 if (serverPlayer.isShiftKeyDown() && hand == InteractionHand.MAIN_HAND) {
-                    if (isBedrockPlayer(serverPlayer)) {
+                    if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUUID())) {
                         openArmorStandForm(serverPlayer, armorStand);
                         return InteractionResult.SUCCESS;
                     }
@@ -73,11 +72,6 @@ public class Bedrock_armor_stand_control implements ModInitializer {
             }
             return InteractionResult.PASS;
         });
-    }
-
-    // Verify that the player is a Bedrock player
-    private boolean isBedrockPlayer(ServerPlayer player) {
-        return GeyserApi.api().connectionByUuid(player.getUUID()) != null;
     }
 
 //    // Find the nearest armor stand (only used if activated by command)
@@ -98,9 +92,7 @@ public class Bedrock_armor_stand_control implements ModInitializer {
 
     // Build the cumulus form and set up the response handling
     private void openArmorStandForm(ServerPlayer player, ArmorStand stand) {
-        GeyserConnection connection = GeyserApi.api().connectionByUuid(player.getUUID());
-        if (connection == null) return;
-
+ 
         // Get rotations in degrees
         Rotations headRot = stand.getHeadPose();
         Rotations bodyRot =stand.getBodyPose();
@@ -111,6 +103,7 @@ public class Bedrock_armor_stand_control implements ModInitializer {
 
         CustomForm.Builder form = CustomForm.builder()
             .title("Bedrock Armor Stand Control")
+            .title("by Ptefar")
             
             .label("--- Rotations (-179 - 180) ---")
             .slider("Overall", -179, 180, 1, stand.getYRot())
@@ -237,5 +230,5 @@ public class Bedrock_armor_stand_control implements ModInitializer {
                 player.sendSystemMessage(Component.literal("Armor stand updated!"));
             });
         });
-        connection.sendForm(form);
+        FloodgateApi.getInstance().sendForm(player.getUUID(), form);
     }}
