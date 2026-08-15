@@ -145,7 +145,8 @@ public class Bedrock_armor_stand_control implements ModInitializer {
             .toggle("Gravity", !stand.isNoGravity())
             .toggle("Invisible", stand.isInvisible())
             .toggle("Small", stand.isSmall())
-            .toggle("Lock", ((ArmorStandAccessor)stand).getDisabledSlots() != 0)
+//            .toggle("Lock", ((ArmorStandAccessor)stand).getDisabledSlots() != 0)
+            .toggle("Lock", stand.isInvulnerable())
             .slider("Scale", 0.01f, 4, 0.01f, (float)(stand.getAttribute(Attributes.SCALE).getBaseValue()))
             
             // Actions (executed on submit)
@@ -207,6 +208,7 @@ public class Bedrock_armor_stand_control implements ModInitializer {
                 stand.setInvisible(isInvisible);
 
                 // Lock armor stand by disabling all slots (bitmask)
+                stand.setInvulnerable(isLocked);
                 if (isLocked) {
                     ((ArmorStandAccessor)stand).setDisabledSlots(0x3f3f3f); // Lock all slots
                 } else {
