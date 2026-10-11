@@ -208,7 +208,7 @@ public class Bedrock_armor_stand_control implements ModInitializer {
                 stand.setInvisible(isInvisible);
 
                 // Lock armor stand by disabling all slots (bitmask)
-                stand.setInvulnerable(isLocked);
+                stand.setPermanentlyInvulnerable(isLocked);
                 if (isLocked) {
                     ((ArmorStandAccessor)stand).setDisabledSlots(0x3f3f3f); // Lock all slots
                 } else {

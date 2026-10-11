@@ -1,7 +1,12 @@
-rev 1.0
+rev 1.2
 -------
-- Initial release
+- Support Minecraft 26.3
 
 rev 1.1
 -------
 - The "locked" status controls both invulnerability and equipment slot interactions
+
+rev 1.0
+-------
+- Initial release
+
